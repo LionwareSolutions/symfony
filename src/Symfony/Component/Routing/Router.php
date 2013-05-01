@@ -112,6 +112,7 @@ class Router implements RouterInterface
             'matcher_cache_class'    => 'ProjectUrlMatcher',
             'resource_type'          => null,
             'strict_requirements'    => true,
+            'naming_strategy'        => null
         );
 
         // check option names and live merge, if errors are encountered Exception will be thrown
