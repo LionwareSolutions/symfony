@@ -105,7 +105,7 @@ EOF
         $output->writeln('Parsing templates');
         $extractor = $this->getContainer()->get('translation.extractor');
         $extractor->setPrefix($input->getOption('prefix'));
-        $extractor->extract($foundBundle->getPath().'/Resources/views/', $extractedCatalogue);
+        $extractor->extract($foundBundle->getPath(), $extractedCatalogue);
 
         // load any existing messages from the translation files
         $currentCatalogue = new MessageCatalogue($input->getArgument('locale'));

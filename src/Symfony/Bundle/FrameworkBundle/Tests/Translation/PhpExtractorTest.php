@@ -29,7 +29,25 @@ class PhpExtractorTest extends TestCase
 
         // Assert
         $this->assertCount(1, $catalogue->all('messages'), '->extract() should find 1 translation');
-        $this->assertTrue($catalogue->has('new key'), '->extract() should find at leat "new key" message');
+        $this->assertTrue($catalogue->has('new key'), '->extract() should find at least "new key" message');
         $this->assertEquals('prefixnew key', $catalogue->get('new key'), '->extract() should apply "prefix" as prefix');
+    }
+
+    public function testPhpExtraction()
+    {
+        // Arrange
+        $extractor = new PhpExtractor();
+        $extractor->setPrefix('prefix');
+        $catalogue = new MessageCatalogue('en');
+
+        // Act
+        $extractor->extract(__DIR__.'/../Fixtures/Translation', $catalogue);
+
+        // Assert
+        $this->assertCount(2, $catalogue->all('messages'), '->extract() should find 2 translations');
+        $this->assertTrue($catalogue->has('translation.one'), '->extract() should find "translation.one" message');
+        $this->assertTrue($catalogue->has('translation.two'), '->extract() should find "translation.two" message');
+        $this->assertEquals('prefixtranslation.one', $catalogue->get('translation.one'), '->extract() should apply "prefix" as prefix');
+        $this->assertEquals('prefixtranslation.two', $catalogue->get('translation.two'), '->extract() should apply "prefix" as prefix');
     }
 }

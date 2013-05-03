@@ -39,6 +39,24 @@ class PhpExtractor implements ExtractorInterface
      */
     protected $sequences = array(
         array(
+            '$translator',
+            '->',
+            'trans',
+            '(',
+            self::MESSAGE_TOKEN,
+            ')',
+        ),
+        array(
+            '$this',
+            '->',
+            'translator',
+            '->',
+            'trans',
+            '(',
+            self::MESSAGE_TOKEN,
+            ')',
+        ),
+        array(
             '$view',
             '[',
             '\'translator\'',
@@ -48,7 +66,7 @@ class PhpExtractor implements ExtractorInterface
             '(',
             self::MESSAGE_TOKEN,
             ')',
-        ),
+        )
     );
 
     /**
